@@ -10,14 +10,13 @@
 
     <ContentView >
         <StackLayout x:Name="stackLayout">
-            <AbsoluteLayout x:Name="absoluteLayout"
-                            BackgroundColor="Green" />
-        
-            <!-- Balance out layout with invisible button. -->
+             <!-- Balance out layout with invisible button. -->
             <Button Text="OK"
                     Clicked="OnBackPage"
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="CenterAndExpand" />
+            <AbsoluteLayout x:Name="absoluteLayout"
+                            BackgroundColor="Green" />
         </StackLayout>
     </ContentView>
 </ContentPage>

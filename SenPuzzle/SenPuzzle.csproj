@@ -50,6 +50,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bitmaps\Bitmap.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
