@@ -25,7 +25,6 @@
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/Xamarin.Forms.Platform.Android.dll
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/Xamarin.Forms.Platform.dll
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/Xamarin.Forms.Xaml.dll
-/Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/SenPuzzle.pdb
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/FormsViewGroup.pdb
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/FormsViewGroup.dll.mdb
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/Xamarin.Forms.Core.pdb
@@ -57,4 +56,3 @@ obj/Debug/linksrc/Xamarin.Forms.Platform.Android.dll.mdb
 obj/Debug/linksrc/Xamarin.Forms.Xaml.dll.mdb
 obj/Debug/linksrc/SenPuzzle.Droid.pdb
 obj/Debug/linksrc/Mono.Android.pdb
-obj/Debug/linksrc/SenPuzzle.pdb
