@@ -14,3 +14,8 @@
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/obj/Debug/SenPuzzle.SenPuzzlePage.xaml.g.cs
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/obj/Debug/SenPuzzle.HelpPage.xaml.g.cs
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/obj/Debug/SenPuzzle.dll
+/Users/sfallou/Projects/SenPuzzle/SenPuzzle/obj/Debug/SenPuzzle.csprojResolveAssemblyReference.cache
+/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/AsyncUtilities.dll
+/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/System.Threading.Tasks.Extensions.dll
+/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/System.Threading.Tasks.Extensions.xml
+/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/AsyncUtilities.xml

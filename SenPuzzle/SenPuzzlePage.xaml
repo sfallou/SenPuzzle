@@ -10,20 +10,50 @@
 
     <ContentView SizeChanged="OnContainerSizeChanged">
         <StackLayout x:Name="stackLayout">
-        
-            <Button Text="Mélanger"
+            <Button x:Name="btnStart"
+                    Text="Démarrer"
                     Clicked="OnRandomizeButtonClicked"
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="CenterAndExpand" />
 
             <AbsoluteLayout x:Name="absoluteLayout"
                             BackgroundColor="Green" />
+            
+           <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <!--Label Text="Top Left" Grid.Row="0" Grid.Column="0" />
+              <Label Text="Top Right" Grid.Row="0" Grid.Column="1" />-->
+              <Button x:Name="btnHelp"
+                    Text="Help" 
+                    Grid.Row="0" Grid.Column="0"
+                      Opacity="0"/>
+               <Label x:Name="chrono"
+                    Text="00:00:00" 
+                    Grid.Row="0" Grid.Column="1"
+                    Opacity="0"
+                    TextColor="#1e3c66" 
+                    FontAttributes="Bold" 
+                    XAlign="Center"
+                    YAlign="Center"/>
+                
+                 <Button x:Name="btnNew"
+                    Text="New" 
+                    Grid.Row="0" Grid.Column="2"
+                    Opacity="0"/>
+              <!--Label Text="Bottom Left" Grid.Row="1" Grid.Column="0" />
+              <Label Text="Bottom Right" Grid.Row="1" Grid.Column="1" />-->
+           </Grid>
+            
         
             <!-- Balance out layout with invisible button. -->
-            <Button Text="Aide"
-                    Clicked="HelpButtonClicked"
-                    HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="CenterAndExpand" />
+            <!--Button Text="Aide" Clicked="HelpButtonClicked" HorizontalOptions="Start" VerticalOptions="Start" /> -->
         </StackLayout>
     </ContentView>
 </ContentPage>

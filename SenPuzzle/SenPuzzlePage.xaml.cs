@@ -162,16 +162,70 @@ namespace SenPuzzle
                 await ShiftIntoEmpty(rand.Next(NUM), emptyCol, 25);
                 await ShiftIntoEmpty(emptyRow, rand.Next(NUM), 25);
             }
+           
+            button.Text = "Pause";
+            button.Clicked += PauseButtonClicked;
             button.IsEnabled = true;
-
+            btnNew.Opacity = 1;
+            btnNew.Clicked += RestartButtonClicked;
+            btnHelp.Opacity = 1;
+            btnHelp.Clicked += HelpButtonClicked;
+            chrono.Opacity = 1;
             isBusy = false;
+
         }
 
+
+        // Fonction pour faire la pause
+        void PauseButtonClicked(object sender, EventArgs args)
+        {
+            Navigation.PopModalAsync();
+            Navigation.PushModalAsync(new SenPuzzlePage());
+
+        }
+
+        // Fonction pour redémarrer la partie
+         void RestartButtonClicked(object sender, EventArgs args)
+        {
+            Navigation.PopModalAsync();
+            Navigation.PushModalAsync(new SenPuzzlePage());
+
+        }
 
         async void HelpButtonClicked(object sender, EventArgs args)
         {
             await Navigation.PushModalAsync(new HelpPage());
 
         }
+        private async Task WaitAndExecute(int milisec, Action actionToExecute)
+        {
+            await Task.Delay(milisec);
+            actionToExecute();
+        }
+        //await WaitAndExecute(2000, () => DisplayAlert("Alert", "This fired after 2 seconds","ok"));
+        /*
+        private CancellationTokenSource cts;
+        public void StartUpdate()
+        {
+            if (cts != null) cts.Cancel();
+            cts = new CancellationTokenSource();
+            var ignore = UpdateAsync(cts.Token);
+        }
+
+        public void StopUpdate()
+        {
+            if (cts != null) cts.Cancel();
+            cts = null;
+        }
+
+        public async Task UpdaterAsync()
+        {
+            while (!ct.IsCancellationRequested)
+            {
+                yourTextView.Text = whatever;
+                await Task.Delay(100, ct);
+            }
+        }
+        */
     }
 }

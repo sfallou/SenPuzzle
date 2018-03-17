@@ -1,0 +1,859 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AsyncUtilities</name>
+    </assembly>
+    <members>
+        <member name="T:AsyncUtilities.CancelableTaskCompletionSource`1">
+            <summary>
+            Represents a <see cref="T:System.Threading.Tasks.TaskCompletionSource`1"/> associated with a <see cref="P:AsyncUtilities.CancelableTaskCompletionSource`1.CancellationToken"/>.  
+            Canceling the <see cref="P:AsyncUtilities.CancelableTaskCompletionSource`1.CancellationToken"/> will cancel the <see cref="T:AsyncUtilities.CancelableTaskCompletionSource`1"/>.
+            </summary>
+            <typeparam name="TResult">
+            The type of the result value associated with this <see cref="T:AsyncUtilities.CancelableTaskCompletionSource`1"/>.
+            </typeparam>
+        </member>
+        <member name="P:AsyncUtilities.CancelableTaskCompletionSource`1.CancellationToken">
+            <summary>
+            Gets the <see cref="P:AsyncUtilities.CancelableTaskCompletionSource`1.CancellationToken"/> associated with this <see cref="T:AsyncUtilities.CancelableTaskCompletionSource`1"/>.
+            </summary>
+        </member>
+        <member name="M:AsyncUtilities.CancelableTaskCompletionSource`1.#ctor(System.Threading.CancellationToken)">
+            <summary>
+            Creates a <see cref="T:AsyncUtilities.CancelableTaskCompletionSource`1"/>.
+            </summary>
+            <param name="cancellationToken">
+            The <see cref="P:AsyncUtilities.CancelableTaskCompletionSource`1.CancellationToken"/> to associate with the <see cref="T:AsyncUtilities.CancelableTaskCompletionSource`1"/>.
+            </param>
+        </member>
+        <member name="M:AsyncUtilities.CancelableTaskCompletionSource`1.#ctor(System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            Creates a <see cref="T:AsyncUtilities.CancelableTaskCompletionSource`1"/>.
+            </summary>
+            <param name="cancellationToken">
+            The <see cref="P:AsyncUtilities.CancelableTaskCompletionSource`1.CancellationToken"/> to associate with the <see cref="T:AsyncUtilities.CancelableTaskCompletionSource`1"/>.
+            </param>
+            <param name="creationOptions">
+            The options to use when creating the underlying <see cref="T:System.Threading.Tasks.Task`1"/>.
+            </param>
+        </member>
+        <member name="M:AsyncUtilities.CancelableTaskCompletionSource`1.#ctor(System.Threading.CancellationToken,System.Object)">
+            <summary>
+            Creates a <see cref="T:AsyncUtilities.CancelableTaskCompletionSource`1"/>.
+            </summary>
+            <param name="cancellationToken">
+            The <see cref="P:AsyncUtilities.CancelableTaskCompletionSource`1.CancellationToken"/> to associate with the <see cref="T:AsyncUtilities.CancelableTaskCompletionSource`1"/>.
+            </param>
+            <param name="state">
+            The state to use as the underlying <see cref="T:System.Threading.Tasks.Task`1"/>'s AsyncState.
+            </param>
+        </member>
+        <member name="M:AsyncUtilities.CancelableTaskCompletionSource`1.#ctor(System.Threading.CancellationToken,System.Object,System.Threading.Tasks.TaskCreationOptions)">
+            <summary>
+            Creates a <see cref="T:AsyncUtilities.CancelableTaskCompletionSource`1"/>.
+            </summary>
+            <param name="cancellationToken">
+            The <see cref="P:AsyncUtilities.CancelableTaskCompletionSource`1.CancellationToken"/> to associate with the <see cref="T:AsyncUtilities.CancelableTaskCompletionSource`1"/>.
+            </param>
+            <param name="state">
+            The state to use as the underlying <see cref="T:System.Threading.Tasks.Task`1"/>'s AsyncState.
+            </param>
+            <param name="creationOptions">
+            The options to use when creating the underlying <see cref="T:System.Threading.Tasks.Task`1"/>.
+            </param>
+        </member>
+        <member name="T:AsyncUtilities.TaskCompletionSourceExtensions">
+            <summary>Provides a set of static methods for working with 
+            <see cref="T:System.Threading.Tasks.TaskCompletionSource`1"/> instances.</summary>
+        </member>
+        <member name="M:AsyncUtilities.TaskCompletionSourceExtensions.TryCompleteFromCompletedTask``1(System.Threading.Tasks.TaskCompletionSource{``0},System.Threading.Tasks.Task{``0})">
+            <summary>
+            Tries to complete a <see cref="T:System.Threading.Tasks.TaskCompletionSource`1"/> with the status 
+            and result of the provided <paramref name="completedTask"/>.
+            </summary>
+            <typeparam name="TResult">
+            The type of the result value associated with this <see cref="T:System.Threading.Tasks.TaskCompletionSource`1" />.
+            </typeparam>
+            <param name="taskCompletionSource">
+            The <see cref="T:System.Threading.Tasks.TaskCompletionSource`1"/> instance to complete with the <paramref name="completedTask"/>.
+            </param>
+            <param name="completedTask">
+            The completed <see cref="T:System.Threading.Tasks.Task`1"/> to use when completing the <paramref name="taskCompletionSource"/>.
+            </param>
+            <returns>
+            <see langword="true" /> if the <paramref name="taskCompletionSource"/> was completed successfully; 
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:AsyncUtilities.TaskExtensions">
+            <summary>Provides a set of static methods for working with specific kinds of 
+            <see cref="T:System.Threading.Tasks.Task"/> instances.</summary>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.ContinueWithSynchronously(System.Threading.Tasks.Task,System.Action{System.Threading.Tasks.Task})">
+            <summary>
+            Creates a continuation that executes synchronously on the ThreadPool when the target <see cref="T:System.Threading.Tasks.Task"/> completes.
+            </summary>
+            <param name="task">
+            The antecedent <see cref="T:System.Threading.Tasks.Task"/>.
+            </param>
+            <param name="continuationAction">
+            An action to run when the <see cref="T:System.Threading.Tasks.Task"/> completes. When run, the delegate will be
+            passed the completed task as an argument.
+            </param>
+            <returns>A new continuation <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="task"/> argument is null.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="continuationAction"/> argument is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.ContinueWithSynchronously(System.Threading.Tasks.Task,System.Action{System.Threading.Tasks.Task,System.Object},System.Object)">
+            <summary>
+            Creates a continuation that executes synchronously on the ThreadPool when the target <see cref="T:System.Threading.Tasks.Task"/> completes.
+            </summary>
+            <param name="task">
+            The antecedent <see cref="T:System.Threading.Tasks.Task"/>.
+            </param>
+            <param name="continuationAction">
+            An action to run when the <see cref="T:System.Threading.Tasks.Task"/> completes. When run, the delegate will be
+            passed the completed task as an argument.
+            </param>
+            <param name="state">
+            An object representing data to be used by the continuation action.
+            </param>
+            <returns>A new continuation <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="task"/> argument is null.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="continuationAction"/> argument is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.ContinueWithSynchronously``1(System.Threading.Tasks.Task,System.Func{System.Threading.Tasks.Task,``0})">
+            <summary>
+            Creates a continuation that executes synchronously on the ThreadPool when the target <see cref="T:System.Threading.Tasks.Task"/> completes.
+            </summary>
+            <param name="task">
+            The antecedent <see cref="T:System.Threading.Tasks.Task"/>.
+            </param>
+            <param name="continuationFunction">
+            A function to run when the <see cref="T:System.Threading.Tasks.Task"/> completes. When run, the delegate will be
+            passed the completed task as an argument.
+            </param>
+            <returns>A new continuation <see cref="T:System.Threading.Tasks.Task`1"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="task"/> argument is null.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="continuationFunction"/> argument is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.ContinueWithSynchronously``1(System.Threading.Tasks.Task,System.Func{System.Threading.Tasks.Task,System.Object,``0},System.Object)">
+            <summary>
+            Creates a continuation that executes synchronously on the ThreadPool when the target <see cref="T:System.Threading.Tasks.Task"/> completes.
+            </summary>
+            <param name="task">
+            The antecedent <see cref="T:System.Threading.Tasks.Task"/>.
+            </param>
+            <param name="continuationFunction">
+            A function to run when the <see cref="T:System.Threading.Tasks.Task"/> completes. When run, the delegate will be
+            passed the completed task as an argument.
+            </param>
+            <param name="state">
+            An object representing data to be used by the continuation function.
+            </param>
+            <returns>A new continuation <see cref="T:System.Threading.Tasks.Task`1"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="task"/> argument is null.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="continuationFunction"/> argument is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.ContinueWithSynchronously``1(System.Threading.Tasks.Task{``0},System.Action{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Creates a continuation that executes synchronously on the ThreadPool when the target <see cref="T:System.Threading.Tasks.Task`1"/> completes.
+            </summary>
+            <param name="task">
+            The antecedent <see cref="T:System.Threading.Tasks.Task`1"/>.
+            </param>
+            <param name="continuationAction">
+            An action to run when the <see cref="T:System.Threading.Tasks.Task`1"/> completes. When run, the delegate will be
+            passed the completed task as an argument.
+            </param>
+            <returns>A new continuation <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="task"/> argument is null.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="continuationAction"/> argument is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.ContinueWithSynchronously``1(System.Threading.Tasks.Task{``0},System.Action{System.Threading.Tasks.Task{``0},System.Object},System.Object)">
+            <summary>
+            Creates a continuation that executes synchronously on the ThreadPool when the target <see cref="T:System.Threading.Tasks.Task`1"/> completes.
+            </summary>
+            <param name="task">
+            The antecedent <see cref="T:System.Threading.Tasks.Task`1"/>.
+            </param>
+            <param name="continuationAction">
+            An action to run when the <see cref="T:System.Threading.Tasks.Task`1"/> completes. When run, the delegate will be
+            passed the completed task as an argument.
+            </param>
+            <param name="state">
+            An object representing data to be used by the continuation action.
+            </param>
+            <returns>A new continuation <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="task"/> argument is null.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="continuationAction"/> argument is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.ContinueWithSynchronously``2(System.Threading.Tasks.Task{``0},System.Func{System.Threading.Tasks.Task{``0},``1})">
+            <summary>
+            Creates a continuation that executes synchronously on the ThreadPool when the target <see cref="T:System.Threading.Tasks.Task`1"/> completes.
+            </summary>
+            <param name="task">
+            The antecedent <see cref="T:System.Threading.Tasks.Task`1"/>.
+            </param>
+            <param name="continuationFunction">
+            A function to run when the <see cref="T:System.Threading.Tasks.Task`1"/> completes. When run, the delegate will be
+            passed the completed task as an argument.
+            </param>
+            <returns>A new continuation <see cref="T:System.Threading.Tasks.Task`1"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="task"/> argument is null.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="continuationFunction"/> argument is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.ContinueWithSynchronously``2(System.Threading.Tasks.Task{``0},System.Func{System.Threading.Tasks.Task{``0},System.Object,``1},System.Object)">
+            <summary>
+            Creates a continuation that executes synchronously on the ThreadPool when the target <see cref="T:System.Threading.Tasks.Task`1"/> completes.
+            </summary>
+            <param name="task">
+            The antecedent <see cref="T:System.Threading.Tasks.Task`1"/>.
+            </param>
+            <param name="continuationFunction">
+            A function to run when the <see cref="T:System.Threading.Tasks.Task`1"/> completes. When run, the delegate will be
+            passed the completed task as an argument.
+            </param>
+            <param name="state">
+            An object representing data to be used by the continuation function.
+            </param>
+            <returns>A new continuation <see cref="T:System.Threading.Tasks.Task`1"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="task"/> argument is null.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="continuationFunction"/> argument is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.ToCancellationTokenSource(System.Threading.Tasks.Task)">
+            <summary>
+            Creates a <see cref="T:System.Threading.CancellationTokenSource"/> that will signal 
+            cancellation when the provided <paramref name="task"/> will complete.
+            </summary>
+            <param name="task">The task that will trigger cancellation when it completes.</param>
+            <returns>
+            A new <see cref="T:System.Threading.CancellationTokenSource"/> instance that will signal cancellation 
+            to the <see cref="T:System.Threading.CancellationToken"/>s when the provided <paramref name="task"/> will be completed.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="task"/> argument is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.GetAwaiter(System.Collections.Generic.IEnumerable{System.Threading.Tasks.Task})">
+            <summary>Gets an awaiter for a collection of <see cref="T:System.Threading.Tasks.Task"/> instances.</summary>
+            <param name="tasks">The tasks to create an awaiter for.</param>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.ConfigureAwait(System.Collections.Generic.IEnumerable{System.Threading.Tasks.Task},System.Boolean)">
+            <summary>Configures an awaiter for a collection of <see cref="T:System.Threading.Tasks.Task"/> instances.</summary>
+            <param name="tasks">The tasks to create an awaiter for.</param>
+            <param name="continueOnCapturedContext">
+            true to attempt to marshal the continuation back to the captured context; otherwise, false.
+            </param>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.GetAwaiter``1(System.Collections.Generic.IEnumerable{System.Threading.Tasks.Task{``0}})">
+            <summary>Gets an awaiter for a collection of <see cref="T:System.Threading.Tasks.Task`1"/> instances.</summary>
+            <param name="tasks">The tasks to create an awaiter for.</param>
+        </member>
+        <member name="M:AsyncUtilities.TaskExtensions.ConfigureAwait``1(System.Collections.Generic.IEnumerable{System.Threading.Tasks.Task{``0}},System.Boolean)">
+            <summary>Configures an awaiter for a collection of <see cref="T:System.Threading.Tasks.Task`1"/> instances.</summary>
+            <param name="tasks">The tasks to create an awaiter for.</param>
+            <param name="continueOnCapturedContext">
+            true to attempt to marshal the continuation back to the captured context; otherwise, false.
+            </param>
+        </member>
+        <member name="T:AsyncUtilities.AsyncLock">
+            <summary>
+            An asynchronous locking mechanism.
+            </summary>
+        </member>
+        <member name="M:AsyncUtilities.AsyncLock.#ctor">
+            <summary>
+            Creates a new <see cref="T:AsyncUtilities.AsyncLock"/> instance.
+            </summary>
+        </member>
+        <member name="M:AsyncUtilities.AsyncLock.LockAsync">
+            <summary>
+            Asynchronously locks the <see cref="T:AsyncUtilities.AsyncLock"/>.
+            </summary>
+            <returns>
+            A <see cref="T:AsyncUtilities.ValueTask"/> task that will complete when the <see cref="T:AsyncUtilities.AsyncLock"/> 
+            has been taken with a <see cref="T:AsyncUtilities.AsyncLock.Releaser"/> result.  Disposing of the <see cref="T:AsyncUtilities.AsyncLock.Releaser"/> 
+            will release the <see cref="T:AsyncUtilities.AsyncLock"/>.
+            </returns>
+        </member>
+        <member name="M:AsyncUtilities.AsyncLock.LockAsync(System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously locks the <see cref="T:AsyncUtilities.AsyncLock"/>, while observing a
+            <see cref="T:System.Threading.CancellationToken"/>.
+            </summary>
+            <param name="cancellationToken">
+            The <see cref="T:System.Threading.CancellationToken"/> token to observe.
+            </param>
+            <returns>
+            A <see cref="T:AsyncUtilities.ValueTask"/> task that will complete when the <see cref="T:AsyncUtilities.AsyncLock"/> 
+            has been taken with a <see cref="T:AsyncUtilities.AsyncLock.Releaser"/> result.  Disposing of the <see cref="T:AsyncUtilities.AsyncLock.Releaser"/> 
+            will release the <see cref="T:AsyncUtilities.AsyncLock"/>.
+            </returns>
+        </member>
+        <member name="T:AsyncUtilities.AsyncLock.Releaser">
+            <summary>
+            <see cref="T:AsyncUtilities.AsyncLock.Releaser"/> enables holding an <see cref="T:AsyncUtilities.AsyncLock"/> with a using scope.
+            </summary>
+        </member>
+        <member name="M:AsyncUtilities.AsyncLock.Releaser.Dispose">
+            <summary>
+            Releases the held <see cref="T:AsyncUtilities.AsyncLock"/>.
+            </summary>
+        </member>
+        <member name="T:AsyncUtilities.Striped">
+            <summary>
+            <see cref="T:AsyncUtilities.Striped"/> divides a locking mechanism into granular 
+            stripes allowing different operations to hold separate stripes concurrently instead
+            of holding the entire locking mechanism altogether.
+            </summary>
+        </member>
+        <member name="M:AsyncUtilities.Striped.Create``2(System.Int32)">
+            <summary>
+            Create a new <see cref="T:AsyncUtilities.Striped`2"/> instance with the specified 
+            amount of stripes.
+            </summary>
+            <typeparam name="TKey">
+            The type of the keys the stripes correspond to.
+            </typeparam>
+            <typeparam name="TLock">
+            The type of the locking mechanism to stripe.
+            </typeparam>
+            <param name="stripes">
+            The amount of stripes to divide the <typeparamref name="TLock"/> into.
+            </param>
+            <returns>
+            A new <see cref="T:AsyncUtilities.Striped`2"/> instance with the specified arguments.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="stripes"/> is less than 1.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.Striped.Create``2(System.Int32,System.Func{``1})">
+            <summary>
+            Create a new <see cref="T:AsyncUtilities.Striped`2"/> instance with the specified 
+            amount of stripes, that creates new locking mechanism instances using the 
+            creatorFunction.
+            </summary>
+            <typeparam name="TKey">
+            The type of the keys the stripes correspond to.
+            </typeparam>
+            <typeparam name="TLock">
+            The type of the locking mechanism to stripe.
+            </typeparam>
+            <param name="stripes">
+            The amount of stripes to divide the <typeparamref name="TLock"/> into.
+            </param>
+            <param name="creatorFunction">
+            The function to create new <typeparamref name="TLock"/> instances.
+            </param>
+            <returns>
+            A new <see cref="T:AsyncUtilities.Striped`2"/> instance with the specified arguments.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="stripes"/> is less than 1.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="creatorFunction"/> is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.Striped.Create``2(System.Int32,System.Func{``1},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Create a new <see cref="T:AsyncUtilities.Striped`2"/> instance with the specified 
+            amount of stripes, that creates new locking mechanism instances using the 
+            creatorFunction and uses the specified <see cref="T:System.Collections.Generic.IEqualityComparer`1"/>.
+            </summary>
+            <typeparam name="TKey">
+            The type of the keys the stripes correspond to.
+            </typeparam>
+            <typeparam name="TLock">
+            The type of the locking mechanism to stripe.
+            </typeparam>
+            <param name="stripes">
+            The amount of stripes to divide the <typeparamref name="TLock"/> into.
+            </param>
+            <param name="creatorFunction">
+            The function to create new <typeparamref name="TLock"/> instances.
+            </param>
+            <param name="comparer">
+            The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> implementation to use when generating
+            a hash code in order to find a stripe.
+            </param>
+            <returns>
+            A new <see cref="T:AsyncUtilities.Striped`2"/> instance with the specified arguments.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="stripes"/> is less than 1.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="creatorFunction"/> is null.
+            </exception>
+        </member>
+        <member name="T:AsyncUtilities.Striped`2">
+            <summary>
+            <see cref="T:AsyncUtilities.Striped`2"/> divides a <typeparamref name="TLock"/> into granular 
+            stripes allowing different operations to hold separate stripes concurrently instead 
+            of holding the entire <typeparamref name="TLock"/> altogether.
+            </summary>
+            <typeparam name="TKey">
+            The type of the keys the stripes correspond to.
+            </typeparam>
+            <typeparam name="TLock">
+            The type of the locking mechanism to stripe.
+            </typeparam>
+        </member>
+        <member name="F:AsyncUtilities.Striped`2._creatorFunction">
+            <summary>
+            The function to create new <typeparamref name="TLock"/> instances.
+            </summary>
+        </member>
+        <member name="F:AsyncUtilities.Striped`2._stripeMask">
+            <summary>
+            The mask used to generate a stripe's index.
+            </summary>
+        </member>
+        <member name="P:AsyncUtilities.Striped`2.Locks">
+            <summary>
+            Gets the striped <typeparamref name="TLock"/> instances in the 
+            <see cref="T:AsyncUtilities.Striped`2"/>.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing the striped <typeparamref name="TLock"/> 
+            instances in the <see cref="T:AsyncUtilities.Striped`2"/>/>
+            </returns>
+        </member>
+        <member name="P:AsyncUtilities.Striped`2.Item(`0)">
+            <summary>
+            Gets the striped <typeparamref name="TLock"/> the key corresponds to.
+            </summary>
+            <param name="key">
+            The key corresponding to the striped <typeparamref name="TLock"/>.
+            </param>
+            <returns>
+            The striped <typeparamref name="TLock"/> the key corresponds to.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="key"/> is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.Striped`2.#ctor(System.Int32,System.Func{`1},System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Create a new <see cref="T:AsyncUtilities.Striped`2"/> instance with the specified 
+            amount of stripes, that creates new locking mechanism instances using the 
+            creatorFunction and uses the specified <see cref="T:System.Collections.Generic.IEqualityComparer`1"/>.
+            </summary>
+            <param name="stripes">
+            The amount of stripes to divide the <typeparamref name="TLock"/> into.
+            </param>
+            <param name="creatorFunction">
+            The function to create new <typeparamref name="TLock"/> instances.
+            </param>
+            <param name="comparer">
+            The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> implementation to use when generating
+            a hash code in order to find a stripe.
+            </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="stripes"/> is less than 1.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="creatorFunction"/> is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.Striped`2.GetLock(`0)">
+            <summary>
+            Gets the striped <typeparamref name="TLock"/> the key corresponds to.
+            </summary>
+            <param name="key">
+            The key corresponding to the striped <typeparamref name="TLock"/>.
+            </param>
+            <returns>
+            The striped <typeparamref name="TLock"/> the key corresponds to.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="key"/> is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.Striped`2.GetLocks(`0[])">
+            <summary>
+            Gets the striped <typeparamref name="TLock"/>s the keys correspond to in a sorted order.
+            </summary>
+            <param name="keys">
+            The keys corresponding to the striped <typeparamref name="TLock"/>s.
+            </param>
+            <returns>
+            The striped <typeparamref name="TLock"/>s the keys corresponds to in a sorted order.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="keys"/> is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.Striped`2.GetLock(System.Int32)">
+            <summary>
+            Gets the striped <typeparamref name="TLock"/> the key corresponds to.
+            </summary>
+            <param name="stripe">
+            The index corresponding to the striped <typeparamref name="TLock"/>.
+            </param>
+            <returns>
+            The striped <typeparamref name="TLock"/> the key corresponds to.
+            </returns>
+        </member>
+        <member name="T:AsyncUtilities.StripedAsyncLock`1">
+            <summary>
+            <see cref="T:AsyncUtilities.StripedAsyncLock`1"/> divides an <see cref="T:AsyncUtilities.AsyncLock"/> into granular 
+            stripes allowing different operations to lock separate stripes concurrently instead 
+            of locking the entire <see cref="T:AsyncUtilities.AsyncLock"/> altogether.
+            </summary>
+            <typeparam name="TKey">
+            The type of the keys the stripes correspond to.
+            </typeparam>
+        </member>
+        <member name="M:AsyncUtilities.StripedAsyncLock`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new <see cref="T:AsyncUtilities.StripedAsyncLock`1"/> instance with the 
+            specified number of stripes.
+            </summary>
+            <param name="stripes">
+            The amount of stripes to divide the <see cref="T:AsyncUtilities.AsyncLock"/> into.
+            </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="stripes"/> is less than 1.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.StripedAsyncLock`1.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Initializes a new <see cref="T:AsyncUtilities.StripedAsyncLock`1"/> instance with the 
+            specified number of stripes that uses the specified <see cref="T:System.Collections.Generic.IEqualityComparer`1"/>.
+            </summary>
+            <param name="stripes">
+            The amount of stripes to divide the <see cref="T:AsyncUtilities.AsyncLock"/> into.
+            </param>
+            <param name="comparer">
+            The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> implementation to use when generating
+            a hash code in order to find a stripe.
+            </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="stripes"/> is less than 1.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.StripedAsyncLock`1.LockAsync(`0)">
+            <summary>
+            Asynchronously locks the <see cref="T:AsyncUtilities.StripedAsyncLock`1"/>.
+            </summary>
+            <param name="key">
+            The key corresponding to the striped <see cref="T:AsyncUtilities.AsyncLock"/>.
+            </param>
+            <returns>
+            A <see cref="T:AsyncUtilities.ValueTask"/> task that will complete when the <see cref="T:AsyncUtilities.StripedAsyncLock`1"/>
+            has been taken with a <see cref="T:AsyncUtilities.StripedAsyncLock`1.Releaser"/> result. Disposing of the <see cref="T:AsyncUtilities.StripedAsyncLock`1.Releaser"/>
+            will release the <see cref="T:AsyncUtilities.StripedAsyncLock`1"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="key"/> is null.
+            </exception>
+        </member>
+        <member name="M:AsyncUtilities.StripedAsyncLock`1.LockAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously locks the <see cref="T:AsyncUtilities.StripedAsyncLock`1"/>, while observing a
+            <see cref="T:System.Threading.CancellationToken"/>.
+            </summary>
+            <param name="key">
+            The key corresponding to the striped <see cref="T:AsyncUtilities.AsyncLock"/>.
+            </param>
+            <param name="cancellationToken">
+            The <see cref="T:System.Threading.CancellationToken"/> token to observe.
+            </param>
+            <returns>
+            A <see cref="T:AsyncUtilities.ValueTask"/> task that will complete when the <see cref="T:AsyncUtilities.StripedAsyncLock`1"/> 
+            has been taken with a <see cref="T:AsyncUtilities.StripedAsyncLock`1.Releaser"/> result.  Disposing of the <see cref="T:AsyncUtilities.StripedAsyncLock`1.Releaser"/> 
+            will release the <see cref="T:AsyncUtilities.StripedAsyncLock`1"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="key"/> is null.
+            </exception>
+        </member>
+        <member name="T:AsyncUtilities.StripedAsyncLock`1.Releaser">
+            <summary>
+            <see cref="T:AsyncUtilities.StripedAsyncLock`1.Releaser"/> enables holding an <see cref="T:AsyncUtilities.StripedAsyncLock`1"/> with a using scope.
+            </summary>
+        </member>
+        <member name="M:AsyncUtilities.StripedAsyncLock`1.Releaser.Dispose">
+            <summary>
+            Releases the held <see cref="T:AsyncUtilities.StripedAsyncLock`1"/>.
+            </summary>
+        </member>
+        <member name="T:AsyncUtilities.ConfiguredTaskEnumerableAwaitable">
+            <summary>Provides an awaitable type that enables configured awaits on a collection of <see cref="T:System.Threading.Tasks.Task"/> instances.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ConfiguredTaskEnumerableAwaitable.#ctor(System.Collections.Generic.IEnumerable{System.Threading.Tasks.Task},System.Boolean)">
+            <summary>Initializes the awaitable.</summary>
+            <param name="tasks">The tasks to be awaited.</param>
+            <param name="continueOnCapturedContext">
+            true to attempt to marshal the continuation back to the original synchronization context captured; otherwise, false.
+            </param>
+        </member>
+        <member name="M:AsyncUtilities.ConfiguredTaskEnumerableAwaitable.GetAwaiter">
+            <summary>Returns an awaiter for this <see cref="T:AsyncUtilities.ConfiguredTaskEnumerableAwaitable"/> instance.</summary>
+        </member>
+        <member name="T:AsyncUtilities.ConfiguredTaskEnumerableAwaitable`1">
+            <summary>Provides an awaitable type that enables configured awaits on a collection of <see cref="T:System.Threading.Tasks.Task`1"/> instances.</summary>
+            <typeparam name="TResult">The type of the produced result.</typeparam>
+        </member>
+        <member name="M:AsyncUtilities.ConfiguredTaskEnumerableAwaitable`1.#ctor(System.Collections.Generic.IEnumerable{System.Threading.Tasks.Task{`0}},System.Boolean)">
+            <summary>Initializes the awaitable.</summary>
+            <param name="tasks">The tasks to be awaited.</param>
+            <param name="continueOnCapturedContext">
+            true to attempt to marshal the continuation back to the original synchronization context captured; otherwise, false.
+            </param>
+        </member>
+        <member name="M:AsyncUtilities.ConfiguredTaskEnumerableAwaitable`1.GetAwaiter">
+            <summary>Returns an awaiter for this <see cref="T:AsyncUtilities.ConfiguredTaskEnumerableAwaitable`1"/> instance.</summary>
+        </member>
+        <member name="T:AsyncUtilities.TaskEnumerableAwaiter">
+            <summary>Provides an awaiter for a collection of <see cref="T:System.Threading.Tasks.Task"/> instances.</summary>
+        </member>
+        <member name="P:AsyncUtilities.TaskEnumerableAwaiter.IsCompleted">
+            <summary>Gets whether the all the tasks completed.</summary>
+        </member>
+        <member name="M:AsyncUtilities.TaskEnumerableAwaiter.#ctor(System.Collections.Generic.IEnumerable{System.Threading.Tasks.Task},System.Boolean)">
+            <summary>Initializes the awaiter.</summary>
+            <param name="tasks">The tasks to be awaited.</param>
+            <param name="continueOnCapturedContext">
+            true to attempt to marshal the continuation back to the original synchronization context captured; otherwise, false.
+            </param>
+        </member>
+        <member name="M:AsyncUtilities.TaskEnumerableAwaiter.OnCompleted(System.Action)">
+            <summary>Schedules the continuation action for these tasks.</summary>
+        </member>
+        <member name="M:AsyncUtilities.TaskEnumerableAwaiter.UnsafeOnCompleted(System.Action)">
+            <summary>Schedules the continuation action for these tasks.</summary>
+        </member>
+        <member name="M:AsyncUtilities.TaskEnumerableAwaiter.GetResult">
+            <summary>Ends the await on the completed tasks.</summary>
+        </member>
+        <member name="T:AsyncUtilities.TaskEnumerableAwaiter`1">
+            <summary>Provides an awaiter for a collection of <see cref="T:System.Threading.Tasks.Task`1"/> instances.</summary>
+            <typeparam name="TResult">The type of the produced result.</typeparam>
+        </member>
+        <member name="P:AsyncUtilities.TaskEnumerableAwaiter`1.IsCompleted">
+            <summary>Gets whether the all the tasks completed.</summary>
+        </member>
+        <member name="M:AsyncUtilities.TaskEnumerableAwaiter`1.#ctor(System.Collections.Generic.IEnumerable{System.Threading.Tasks.Task{`0}},System.Boolean)">
+            <summary>Initializes the awaiter.</summary>
+            <param name="tasks">The tasks to be awaited.</param>
+            <param name="continueOnCapturedContext">
+            true to attempt to marshal the continuation back to the original synchronization context captured; otherwise, false.
+            </param>
+        </member>
+        <member name="M:AsyncUtilities.TaskEnumerableAwaiter`1.OnCompleted(System.Action)">
+            <summary>Schedules the continuation action for these tasks.</summary>
+        </member>
+        <member name="M:AsyncUtilities.TaskEnumerableAwaiter`1.UnsafeOnCompleted(System.Action)">
+            <summary>Schedules the continuation action for these tasks.</summary>
+        </member>
+        <member name="M:AsyncUtilities.TaskEnumerableAwaiter`1.GetResult">
+            <summary>Ends the await on the completed tasks.</summary>
+        </member>
+        <member name="T:AsyncUtilities.AsyncValueTaskMethodBuilder">
+            <summary>Represents a builder for asynchronous methods that returns a <see cref="T:AsyncUtilities.ValueTask"/>.</summary>
+        </member>
+        <member name="M:AsyncUtilities.AsyncValueTaskMethodBuilder.Create">
+            <summary>Creates an instance of the <see cref="T:AsyncUtilities.AsyncValueTaskMethodBuilder"/> struct.</summary>
+            <returns>The initialized instance.</returns>
+        </member>
+        <member name="M:AsyncUtilities.AsyncValueTaskMethodBuilder.Start``1(``0@)">
+            <summary>Begins running the builder with the associated state machine.</summary>
+            <typeparam name="TStateMachine">The type of the state machine.</typeparam>
+            <param name="stateMachine">The state machine instance, passed by reference.</param>
+        </member>
+        <member name="M:AsyncUtilities.AsyncValueTaskMethodBuilder.SetStateMachine(System.Runtime.CompilerServices.IAsyncStateMachine)">
+            <summary>Associates the builder with the specified state machine.</summary>
+            <param name="stateMachine">The state machine instance to associate with the builder.</param>
+        </member>
+        <member name="M:AsyncUtilities.AsyncValueTaskMethodBuilder.SetResult">
+            <summary>Marks the task as successfully completed.</summary>
+        </member>
+        <member name="M:AsyncUtilities.AsyncValueTaskMethodBuilder.SetException(System.Exception)">
+            <summary>Marks the task as failed and binds the specified exception to the task.</summary>
+            <param name="exception">The exception to bind to the task.</param>
+        </member>
+        <member name="P:AsyncUtilities.AsyncValueTaskMethodBuilder.Task">
+            <summary>Gets the task for this builder.</summary>
+        </member>
+        <member name="M:AsyncUtilities.AsyncValueTaskMethodBuilder.AwaitOnCompleted``2(``0@,``1@)">
+            <summary>Schedules the state machine to proceed to the next action when the specified awaiter completes.</summary>
+            <typeparam name="TAwaiter">The type of the awaiter.</typeparam>
+            <typeparam name="TStateMachine">The type of the state machine.</typeparam>
+            <param name="awaiter">the awaiter</param>
+            <param name="stateMachine">The state machine.</param>
+        </member>
+        <member name="M:AsyncUtilities.AsyncValueTaskMethodBuilder.AwaitUnsafeOnCompleted``2(``0@,``1@)">
+            <summary>Schedules the state machine to proceed to the next action when the specified awaiter completes.</summary>
+            <typeparam name="TAwaiter">The type of the awaiter.</typeparam>
+            <typeparam name="TStateMachine">The type of the state machine.</typeparam>
+            <param name="awaiter">the awaiter</param>
+            <param name="stateMachine">The state machine.</param>
+        </member>
+        <member name="T:AsyncUtilities.ConfiguredValueTaskAwaitable">
+            <summary>Provides an awaitable type that enables configured awaits on a <see cref="T:AsyncUtilities.ValueTask"/>.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ConfiguredValueTaskAwaitable.#ctor(AsyncUtilities.ValueTask,System.Boolean)">
+            <summary>Initializes the awaitable.</summary>
+            <param name="value">The wrapped <see cref="T:AsyncUtilities.ValueTask"/>.</param>
+            <param name="continueOnCapturedContext">
+            true to attempt to marshal the continuation back to the original synchronization context captured; otherwise, false.
+            </param>
+        </member>
+        <member name="M:AsyncUtilities.ConfiguredValueTaskAwaitable.GetAwaiter">
+            <summary>Returns an awaiter for this <see cref="T:AsyncUtilities.ConfiguredValueTaskAwaitable"/> instance.</summary>
+        </member>
+        <member name="T:AsyncUtilities.ConfiguredValueTaskAwaitable.ConfiguredValueTaskAwaiter">
+            <summary>Provides an awaiter for a <see cref="T:AsyncUtilities.ConfiguredValueTaskAwaitable"/>.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ConfiguredValueTaskAwaitable.ConfiguredValueTaskAwaiter.#ctor(AsyncUtilities.ValueTask,System.Boolean)">
+            <summary>Initializes the awaiter.</summary>
+            <param name="value">The value to be awaited.</param>
+            <param name="continueOnCapturedContext">The value to pass to ConfigureAwait.</param>
+        </member>
+        <member name="P:AsyncUtilities.ConfiguredValueTaskAwaitable.ConfiguredValueTaskAwaiter.IsCompleted">
+            <summary>Gets whether the <see cref="T:AsyncUtilities.ConfiguredValueTaskAwaitable"/> has completed.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ConfiguredValueTaskAwaitable.ConfiguredValueTaskAwaiter.GetResult">
+            <summary>Gets the result of the ValueTask.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ConfiguredValueTaskAwaitable.ConfiguredValueTaskAwaiter.OnCompleted(System.Action)">
+            <summary>Schedules the continuation action for the <see cref="T:AsyncUtilities.ConfiguredValueTaskAwaitable"/>.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ConfiguredValueTaskAwaitable.ConfiguredValueTaskAwaiter.UnsafeOnCompleted(System.Action)">
+            <summary>Schedules the continuation action for the <see cref="T:AsyncUtilities.ConfiguredValueTaskAwaitable"/>.</summary>
+        </member>
+        <member name="T:AsyncUtilities.ValueTask">
+            <summary>
+            Provides a value type that wraps a <see cref="T:System.Threading.Tasks.Task"/>.
+            </summary>
+            <remarks>
+            <para>
+            Methods may return an instance of this value type when it's likely that the result of their
+            operations will be available synchronously and when the method is expected to be invoked so
+            frequently that the cost of allocating a new <see cref="T:System.Threading.Tasks.Task"/> for each call will
+            be prohibitive.
+            </para>
+            <para>
+            For example, for uses other than consuming the result of an asynchronous operation via await, 
+            <see cref="T:AsyncUtilities.ValueTask"/> can lead to a more convoluted programming model, which can in turn actually 
+            lead to more allocations.  For example, consider a method that could return either a <see cref="T:System.Threading.Tasks.Task"/> 
+            with a cached task as a common result or a <see cref="T:AsyncUtilities.ValueTask"/>.  If the consumer of the result 
+            wants to use it as a <see cref="T:System.Threading.Tasks.Task"/>, such as to use with in methods like Task.WhenAll and Task.WhenAny, 
+            the <see cref="T:AsyncUtilities.ValueTask"/> would first need to be converted into a <see cref="T:System.Threading.Tasks.Task"/> using 
+            <see cref="M:AsyncUtilities.ValueTask.AsTask"/>, which leads to an allocation that would have been avoided if a cached 
+            <see cref="T:System.Threading.Tasks.Task"/> had been used in the first place.
+            </para>
+            <para>
+            As such, the default choice for any asynchronous method should be to return a <see cref="T:System.Threading.Tasks.Task"/> or 
+            <see cref="T:System.Threading.Tasks.Task`1"/>. Only if performance analysis proves it worthwhile should a <see cref="T:AsyncUtilities.ValueTask"/> 
+            be used instead of <see cref="T:System.Threading.Tasks.Task"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:AsyncUtilities.ValueTask.#ctor(System.Threading.Tasks.Task)">
+            <summary>
+            Initialize the <see cref="T:AsyncUtilities.ValueTask"/> with a <see cref="T:System.Threading.Tasks.Task"/> that represents the operation.
+            </summary>
+            <param name="task">The task.</param>
+        </member>
+        <member name="M:AsyncUtilities.ValueTask.GetHashCode">
+            <summary>Returns the hash code for this instance.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ValueTask.Equals(System.Object)">
+            <summary>Returns a value indicating whether this value is equal to a specified <see cref="T:System.Object"/>.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ValueTask.Equals(AsyncUtilities.ValueTask)">
+            <summary>Returns a value indicating whether this value is equal to a specified <see cref="T:AsyncUtilities.ValueTask"/> value.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ValueTask.op_Equality(AsyncUtilities.ValueTask,AsyncUtilities.ValueTask)">
+            <summary>Returns a value indicating whether two <see cref="T:AsyncUtilities.ValueTask"/> values are equal.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ValueTask.op_Inequality(AsyncUtilities.ValueTask,AsyncUtilities.ValueTask)">
+            <summary>Returns a value indicating whether two <see cref="T:AsyncUtilities.ValueTask"/> values are not equal.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ValueTask.AsTask">
+            <summary>
+            Gets a <see cref="T:System.Threading.Tasks.Task"/> object to represent this ValueTask.  It will
+            either return the task object if one exists, or it'll manufacture a new
+            task object to represent the result.
+            </summary>
+        </member>
+        <member name="P:AsyncUtilities.ValueTask.IsCompleted">
+            <summary>Gets whether the <see cref="T:AsyncUtilities.ValueTask"/> represents a completed operation.</summary>
+        </member>
+        <member name="P:AsyncUtilities.ValueTask.IsCompletedSuccessfully">
+            <summary>Gets whether the <see cref="T:AsyncUtilities.ValueTask"/> represents a successfully completed operation.</summary>
+        </member>
+        <member name="P:AsyncUtilities.ValueTask.IsFaulted">
+            <summary>Gets whether the <see cref="T:AsyncUtilities.ValueTask"/> represents a failed operation.</summary>
+        </member>
+        <member name="P:AsyncUtilities.ValueTask.IsCanceled">
+            <summary>Gets whether the <see cref="T:AsyncUtilities.ValueTask"/> represents a canceled operation.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ValueTask.GetAwaiter">
+            <summary>Gets an awaiter for this value.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ValueTask.ConfigureAwait(System.Boolean)">
+            <summary>Configures an awaiter for this value.</summary>
+            <param name="continueOnCapturedContext">
+            true to attempt to marshal the continuation back to the captured context; otherwise, false.
+            </param>
+        </member>
+        <member name="T:AsyncUtilities.ValueTaskAwaiter">
+            <summary>Provides an awaiter for a <see cref="T:AsyncUtilities.ValueTask"/>.</summary>
+        </member>
+        <member name="P:AsyncUtilities.ValueTaskAwaiter.IsCompleted">
+            <summary>Gets whether the <see cref="T:AsyncUtilities.ValueTask"/> has completed.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ValueTaskAwaiter.#ctor(AsyncUtilities.ValueTask)">
+            <summary>Initializes the awaiter.</summary>
+            <param name="value">The value to be awaited.</param>
+        </member>
+        <member name="M:AsyncUtilities.ValueTaskAwaiter.GetResult">
+            <summary>Gets the result of the ValueTask.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ValueTaskAwaiter.OnCompleted(System.Action)">
+            <summary>Schedules the continuation action for this ValueTask.</summary>
+        </member>
+        <member name="M:AsyncUtilities.ValueTaskAwaiter.UnsafeOnCompleted(System.Action)">
+            <summary>Schedules the continuation action for this ValueTask.</summary>
+        </member>
+    </members>
+</doc>

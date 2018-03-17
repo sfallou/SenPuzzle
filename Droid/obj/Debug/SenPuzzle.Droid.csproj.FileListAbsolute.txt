@@ -49,10 +49,10 @@
 /Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/res/drawable-xxhdpi/icon.png
 /Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/R.cs.flag
 /Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/uploadflags.txt
-bin/Debug/Mono.Android.pdb
-obj/Debug/linksrc/FormsViewGroup.dll.mdb
-obj/Debug/linksrc/Xamarin.Forms.Core.dll.mdb
-obj/Debug/linksrc/Xamarin.Forms.Platform.Android.dll.mdb
-obj/Debug/linksrc/Xamarin.Forms.Xaml.dll.mdb
-obj/Debug/linksrc/SenPuzzle.Droid.pdb
-obj/Debug/linksrc/Mono.Android.pdb
+/Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/Mono.Android.pdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/linksrc/SenPuzzle.Droid.pdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/linksrc/Mono.Android.pdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/linksrc/FormsViewGroup.dll.mdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/linksrc/Xamarin.Forms.Core.dll.mdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/linksrc/Xamarin.Forms.Platform.Android.dll.mdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/linksrc/Xamarin.Forms.Xaml.dll.mdb

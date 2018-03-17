@@ -15,8 +15,12 @@
                     Clicked="OnBackPage"
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="CenterAndExpand" />
+             <Label TextColor="Black" 
+                    FontSize = "14" 
+                    Text="Le puzzle doit ressembler à cette image" />
             <AbsoluteLayout x:Name="absoluteLayout"
                             BackgroundColor="Green" />
+           
         </StackLayout>
     </ContentView>
 </ContentPage>
