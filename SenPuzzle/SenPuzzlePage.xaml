@@ -10,21 +10,25 @@
 
     <ContentView SizeChanged="OnContainerSizeChanged">
         <StackLayout x:Name="stackLayout">
-            <Button x:Name="btnStart"
-                    Text="Démarrer"
-                    Clicked="OnRandomizeButtonClicked"
+             <Label x:Name="chrono"
+                    Text="00:00:00" 
                     HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="CenterAndExpand" />
-
+                    VerticalOptions="CenterAndExpand"
+                    Opacity="0"
+                    TextColor="#1e3c66" 
+                    FontAttributes="Bold" 
+                    XAlign="Center"
+                    YAlign="Center"/>
             <AbsoluteLayout x:Name="absoluteLayout"
                             BackgroundColor="Green" />
             
-           <Grid>
+           <Grid HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
               <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
               </Grid.RowDefinitions>
               <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
               </Grid.ColumnDefinitions>
@@ -34,15 +38,14 @@
                     Text="Help" 
                     Grid.Row="0" Grid.Column="0"
                       Opacity="0"/>
-               <Label x:Name="chrono"
-                    Text="00:00:00" 
-                    Grid.Row="0" Grid.Column="1"
-                    Opacity="0"
-                    TextColor="#1e3c66" 
-                    FontAttributes="Bold" 
-                    XAlign="Center"
-                    YAlign="Center"/>
                 
+
+                <Button x:Name="btnStart"
+                        Text="Démarrer"
+                        Clicked="OnRandomizeButtonClicked"
+                        Grid.Row="0" Grid.Column="1"/>
+
+                    
                  <Button x:Name="btnNew"
                     Text="New" 
                     Grid.Row="0" Grid.Column="2"

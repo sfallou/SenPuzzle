@@ -11,6 +11,8 @@ namespace SenPuzzle
         // Number of tiles horizontally and vertically,
         //  fixed based on available bitmaps
         static readonly int NUM = 4;
+        public int compt = 0;
+        public bool flag = true;
 
         // Array of tiles
         Tile[,] tiles = new Tile[NUM, NUM];
@@ -164,7 +166,10 @@ namespace SenPuzzle
             }
            
             button.Text = "Pause";
+            button.Clicked -= OnRandomizeButtonClicked;
             button.Clicked += PauseButtonClicked;
+            Device.StartTimer(TimeSpan.FromSeconds(1), update_data); 
+
             button.IsEnabled = true;
             btnNew.Opacity = 1;
             btnNew.Clicked += RestartButtonClicked;
@@ -177,10 +182,28 @@ namespace SenPuzzle
 
 
         // Fonction pour faire la pause
-        void PauseButtonClicked(object sender, EventArgs args)
+         void PauseButtonClicked(object sender, EventArgs args)
         {
-            Navigation.PopModalAsync();
-            Navigation.PushModalAsync(new SenPuzzlePage());
+            flag = false;
+            btnStart.Clicked -= PauseButtonClicked;
+            btnStart.Text = "Reprendre";
+            btnStart.Clicked += ResumeButtonClicked;
+
+            //var res = DisplayAlert("Pause", "Pour reprendre la partie cliquer sur Reprendre", "Reprendre");
+            //var res = await DisplayAlert ("Dialog Title", "Prompt", "Ok", "Cancel"); 
+            //if(res)
+            //{
+             //   flag = true;
+            //}            
+        }
+
+        void ResumeButtonClicked(object sender, EventArgs args)
+        {
+            flag = true;
+            btnStart.Clicked -= ResumeButtonClicked;
+            btnStart.Text = "Pause";
+            btnStart.Clicked += PauseButtonClicked;
+            Device.StartTimer(TimeSpan.FromSeconds(1), update_data); 
 
         }
 
@@ -202,30 +225,14 @@ namespace SenPuzzle
             await Task.Delay(milisec);
             actionToExecute();
         }
-        //await WaitAndExecute(2000, () => DisplayAlert("Alert", "This fired after 2 seconds","ok"));
-        /*
-        private CancellationTokenSource cts;
-        public void StartUpdate()
-        {
-            if (cts != null) cts.Cancel();
-            cts = new CancellationTokenSource();
-            var ignore = UpdateAsync(cts.Token);
-        }
-
-        public void StopUpdate()
-        {
-            if (cts != null) cts.Cancel();
-            cts = null;
-        }
-
-        public async Task UpdaterAsync()
-        {
-            while (!ct.IsCancellationRequested)
-            {
-                yourTextView.Text = whatever;
-                await Task.Delay(100, ct);
-            }
-        }
-        */
+        public bool update_data()
+                {
+            compt += 1;
+            TimeSpan result = TimeSpan.FromSeconds(compt);//TimeSpan.FromHours(compt);
+            string duration = result.ToString("hh':'mm':'ss");
+            chrono.Text = duration;
+                    //Code to run frequently
+                    return flag;
+                }
     }
 }

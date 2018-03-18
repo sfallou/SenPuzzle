@@ -1,5 +1,7 @@
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/Tile.cs
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/SenPuzzle.dll
+/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/AsyncUtilities.dll
+/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/System.Threading.Tasks.Extensions.dll
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/Xamarin.Forms.Core.dll
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/Xamarin.Forms.Platform.dll
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/Xamarin.Forms.Xaml.dll
@@ -9,13 +11,10 @@
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/Xamarin.Forms.Xaml.pdb
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/Xamarin.Forms.Xaml.dll.mdb
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/Xamarin.Forms.Xaml.xml
+/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/System.Threading.Tasks.Extensions.xml
+/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/AsyncUtilities.xml
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/obj/Debug/SenPuzzle.csproj.CoreCompileInputs.cache
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/obj/Debug/SenPuzzle.App.xaml.g.cs
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/obj/Debug/SenPuzzle.SenPuzzlePage.xaml.g.cs
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/obj/Debug/SenPuzzle.HelpPage.xaml.g.cs
 /Users/sfallou/Projects/SenPuzzle/SenPuzzle/obj/Debug/SenPuzzle.dll
-/Users/sfallou/Projects/SenPuzzle/SenPuzzle/obj/Debug/SenPuzzle.csprojResolveAssemblyReference.cache
-/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/AsyncUtilities.dll
-/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/System.Threading.Tasks.Extensions.dll
-/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/System.Threading.Tasks.Extensions.xml
-/Users/sfallou/Projects/SenPuzzle/SenPuzzle/bin/Debug/AsyncUtilities.xml
