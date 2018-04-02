@@ -49,10 +49,10 @@
 /Users/sfallou/Projects/SenPuzzle/Droid/obj/Release/res/drawable-xxhdpi/icon.png
 /Users/sfallou/Projects/SenPuzzle/Droid/obj/Release/R.cs.flag
 /Users/sfallou/Projects/SenPuzzle/Droid/obj/Release/uploadflags.txt
-bin/Release/Mono.Android.pdb
-obj/Release/linksrc/FormsViewGroup.dll.mdb
-obj/Release/linksrc/Xamarin.Forms.Core.dll.mdb
-obj/Release/linksrc/Xamarin.Forms.Platform.Android.dll.mdb
-obj/Release/linksrc/Xamarin.Forms.Xaml.dll.mdb
-obj/Release/linksrc/SenPuzzle.Droid.pdb
-obj/Release/linksrc/Mono.Android.pdb
+/Users/sfallou/Projects/SenPuzzle/Droid/bin/Release/Mono.Android.pdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Release/linksrc/SenPuzzle.Droid.pdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Release/linksrc/Mono.Android.pdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Release/linksrc/FormsViewGroup.dll.mdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Release/linksrc/Xamarin.Forms.Core.dll.mdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Release/linksrc/Xamarin.Forms.Platform.Android.dll.mdb
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Release/linksrc/Xamarin.Forms.Xaml.dll.mdb

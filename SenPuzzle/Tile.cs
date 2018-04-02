@@ -13,6 +13,7 @@ namespace SenPuzzle
         {
             Row = row;
             Col = col;
+            MyImage = "SenPuzzle.Bitmaps.Bitmap" + row + col + ".png";
 
             TileView = new ContentView
             {
@@ -22,7 +23,7 @@ namespace SenPuzzle
                 Content = new Image
                 {
                     //Source = ImageSource.FromUri(new Uri(UrlPrefix + "Bitmap" + row + col + ".png"))
-                    Source = ImageSource.FromResource("SenPuzzle.Bitmaps.Bitmap" + row + col + ".png")
+                    Source = ImageSource.FromResource(MyImage)
                 }
             };
 
@@ -35,6 +36,8 @@ namespace SenPuzzle
         public int Row { set; get; }
 
         public int Col { set; get; }
+
+        public String MyImage { set; get; }
 
         public View TileView { private set; get; }
     }

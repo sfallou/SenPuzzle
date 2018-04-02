@@ -13,6 +13,7 @@ namespace SenPuzzle
         static readonly int NUM = 4;
         public int compt = 0;
         public bool flag = true;
+        public bool flag_game_over = false;
 
         // Array of tiles
         Tile[,] tiles = new Tile[NUM, NUM];
@@ -90,12 +91,11 @@ namespace SenPuzzle
 
             View tileView = (View)sender;
             Tile tappedTile = Tile.Dictionary[tileView];
-
-            await ShiftIntoEmpty(tappedTile.Row, tappedTile.Col);
+            await ShiftIntoEmpty(tappedTile.Row, tappedTile.Col, tappedTile.MyImage);
             isBusy = false;
         }
 
-        async Task ShiftIntoEmpty(int tappedRow, int tappedCol, uint length = 100)
+        async Task ShiftIntoEmpty(int tappedRow, int tappedCol, String tappedImg, uint length = 100)
         {
             // Shift columns.
             if (tappedRow == emptyRow && tappedCol != emptyCol)
@@ -108,6 +108,7 @@ namespace SenPuzzle
                 {
                     await AnimateTile(emptyRow, col, emptyRow, emptyCol, length);
                 }
+
             }
             // Shift rows.
             else if (tappedCol == emptyCol && tappedRow != emptyRow)
@@ -145,9 +146,68 @@ namespace SenPuzzle
             tiles[newRow, newCol] = tile;
             tile.Row = newRow;
             tile.Col = newCol;
+
+            if(flag_game_over){
+                if (CheckGame() == 1)
+                {
+                    GameOver();
+                }
+            }
+           
             tiles[row, col] = null;
             emptyRow = row;
             emptyCol = col;
+
+                
+        }
+        int checkRow(int numRow){
+            String[] imgPos = new String[4];
+            for (int i = 0; i < 4; i++)
+            {
+                imgPos[i] = tiles[numRow, i].MyImage;
+            }
+            if (
+                imgPos[0].Equals("SenPuzzle.Bitmaps.Bitmap" + numRow + "0.png") &&
+                imgPos[1].Equals("SenPuzzle.Bitmaps.Bitmap" + numRow + "1.png") &&
+                imgPos[2].Equals("SenPuzzle.Bitmaps.Bitmap" + numRow + "2.png") &&
+                imgPos[3].Equals("SenPuzzle.Bitmaps.Bitmap" + numRow + "3.png")
+            )
+            {
+                return 1;
+            }
+            return 0;
+        }
+        int checkFirstRow()
+        {
+            String[] imgPos = new String[2];
+            imgPos[0] = tiles[0, 1].MyImage;
+            imgPos[1] = tiles[0, 2].MyImage;
+
+            if (
+                imgPos[0].Equals("SenPuzzle.Bitmaps.Bitmap01.png") &&
+                imgPos[1].Equals("SenPuzzle.Bitmaps.Bitmap02.png")
+            )
+            {
+                return 1;
+            }
+            return 0;
+        }
+        int CheckGame(){
+            int val3 = checkRow(3);
+            int val2 = checkRow(2);
+            int val1 = checkRow(1);
+            int val0 = checkFirstRow();
+            return val2*val3*val1*val0;
+        }
+
+        void GameOver(){
+            flag = false;
+            isBusy = true;
+            btnStart.Opacity = 0;
+            DisplayAlert("Félicitation", "Game Over ! Vous avez réussi.\n Durée :"+chrono.Text, "OK");
+            //chrono.Text += "  Félicitation !";
+            flag = false;
+            isBusy = true;
         }
 
         async void OnRandomizeButtonClicked(object sender, EventArgs args)
@@ -161,8 +221,8 @@ namespace SenPuzzle
             // Simulate some fast crazy taps.
             for (int i = 0; i < 100; i++)
             {
-                await ShiftIntoEmpty(rand.Next(NUM), emptyCol, 25);
-                await ShiftIntoEmpty(emptyRow, rand.Next(NUM), 25);
+                await ShiftIntoEmpty(rand.Next(NUM), emptyCol,null,25);
+                await ShiftIntoEmpty(emptyRow, rand.Next(NUM), null, 25);
             }
            
             button.Text = "Pause";
@@ -176,6 +236,8 @@ namespace SenPuzzle
             btnHelp.Opacity = 1;
             btnHelp.Clicked += HelpButtonClicked;
             chrono.Opacity = 1;
+
+            flag_game_over = true;
             isBusy = false;
 
         }
@@ -185,6 +247,7 @@ namespace SenPuzzle
          void PauseButtonClicked(object sender, EventArgs args)
         {
             flag = false;
+            isBusy = true;
             btnStart.Clicked -= PauseButtonClicked;
             btnStart.Text = "Reprendre";
             btnStart.Clicked += ResumeButtonClicked;
@@ -200,6 +263,7 @@ namespace SenPuzzle
         void ResumeButtonClicked(object sender, EventArgs args)
         {
             flag = true;
+            isBusy = false;
             btnStart.Clicked -= ResumeButtonClicked;
             btnStart.Text = "Pause";
             btnStart.Clicked += PauseButtonClicked;

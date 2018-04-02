@@ -10,6 +10,7 @@
 
     <ContentView SizeChanged="OnContainerSizeChanged">
         <StackLayout x:Name="stackLayout">
+             
              <Label x:Name="chrono"
                     Text="00:00:00" 
                     HorizontalOptions="CenterAndExpand"

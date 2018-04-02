@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{53E064D6-2076-4B2F-BA56-D0B1D063E6DF}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="SenPuzzle/SenPuzzlePage.xaml.cs" Line="207" Column="82" />
+      <File FileName="SenPuzzle/SenPuzzlePage.xaml" Line="13" Column="14" />
+      <File FileName="SenPuzzle/HelpPage.xaml" Line="29" Column="1" />
+      <File FileName="SenPuzzle/HelpPage.xaml.cs" Line="32" Column="46" />
+      <File FileName="SenPuzzle/Tile.cs" Line="16" Column="23" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SenPuzzle.Droid PreferredExecutionTarget="Android.Android_Accelerated_Nougat" AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" />
+  <MultiItemStartupConfigurations />
+  <DisabledProjects>
+    <String>iOS/SenPuzzle.iOS.csproj</String>
+  </DisabledProjects>
+</Properties>

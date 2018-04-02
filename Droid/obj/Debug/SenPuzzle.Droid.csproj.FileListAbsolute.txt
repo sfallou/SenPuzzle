@@ -1,3 +1,4 @@
+/Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/SenPuzzle.Droid.csprojResolveAssemblyReference.cache
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/Tile.cs
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/SenPuzzle.Droid.dll
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/SenPuzzle.Droid.pdb
@@ -35,7 +36,6 @@
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/Xamarin.Forms.Xaml.pdb
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/Xamarin.Forms.Xaml.dll.mdb
 /Users/sfallou/Projects/SenPuzzle/Droid/bin/Debug/Xamarin.Forms.Xaml.xml
-/Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/SenPuzzle.Droid.csprojResolveAssemblyReference.cache
 /Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/SenPuzzle.Droid.csproj.CoreCompileInputs.cache
 /Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/SenPuzzle.Droid.dll
 /Users/sfallou/Projects/SenPuzzle/Droid/obj/Debug/SenPuzzle.Droid.pdb
